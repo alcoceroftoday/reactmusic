@@ -1,7 +1,7 @@
 import CSS from "csstype";
 import React from 'react';
 import {
-    Link
+    NavLink
   } from "react-router-dom";
 // import { css, jsx } from "@emotion/core";
 let Linksa:string[]=["Browser","Artists","Albums","Songs"];
@@ -27,7 +27,7 @@ const AllLink =(props:{Links:string[]}) =>{
 
     return (<>
     {props.Links.map(value => {
-        return <Link className="collection-item" to={`/${value.toLowerCase()}`} >{value}</Link>
+        return <NavLink className="collection-item" to={`/${value.toLowerCase()}`} >{value}</NavLink>
     })}
     </>)
 }  

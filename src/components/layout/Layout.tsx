@@ -27,12 +27,12 @@ export default function Layout() {
     <NavLateral />
     <div style={contentPrincipal}>
       <Switch>
-        <Route path="/browser" exact component={()=><Browser />}/>
+        <Route path="/browser" exact component={()=>(<Browser />)}/>
         <Route path="/artists" exact component={ShareArtists}/>
         <Route path="/artist/:id" exact component={ShareArtists}/>
         <Route path="/albums" exact component={ShareAlbums}/>
         <Route path="/album/:id" exact component={ShareAlbums}/>
-        <Route path="/songs" exact component={()=><Songs  />}/>
+        <Route path="/songs" exact component={()=>(<Songs  />)}/>
       </Switch>
     </div>
     </Router>  
