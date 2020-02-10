@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from "axios";
 import AlbumsCont from '../../../containers/Content/AlbumsCont';
+import ApiServices from '../../api/ApiServices';
 
 interface IProps {
     superhero?: string;
@@ -26,14 +27,13 @@ class Albums extends React.PureComponent<IProps, IState>{
   
 }
   componentDidMount(){
-    
-      axios.get('http://ec2-35-174-153-145.compute-1.amazonaws.com/api/Albums')
-      .then( //json=>console.log(json.data))
-          json=>this.setState({
-              done: true,
-              items:json.data
-          })
-          );
+    const datos = new ApiServices();
+    datos.getAlbums().then(r =>
+        {this.setState({done:true,items:r})}
+        ).catch(() => {
+        console.log('Algo salió mal');
+      });
+
   }
   render(){
       return(

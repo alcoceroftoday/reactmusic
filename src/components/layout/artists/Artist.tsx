@@ -2,6 +2,7 @@ import React from 'react';
 import axios from "axios";
 // import SongsCont from '../../../containers/Content/SongsCont';
 import AlbumsCont from '../../../containers/Content/AlbumsCont';
+import ApiServices from '../../api/ApiServices';
 
 interface IProps {
     id: string;
@@ -28,13 +29,13 @@ class Artist extends React.PureComponent<IProps, IState>{
 }
   componentDidMount(){
     console.log(this.props.id)
-      axios.get('http://ec2-35-174-153-145.compute-1.amazonaws.com/api/artists/'+this.props.id)
-      .then( //json=>console.log(json.data))
-          json=>this.setState({
-              done: true,
-              items:json.data.albums
-          })
-          );
+    const datos = new ApiServices();
+    datos.getArtist(this.props.id).then(r =>
+        {this.setState({done:true,items:r})}
+        ).catch(() => {
+        console.log('Algo salió mal');
+      });
+  
   }
   render(){
       return(
