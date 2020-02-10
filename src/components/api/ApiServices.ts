@@ -31,7 +31,9 @@ interface IAlbums {
     artwork:string;
 }
 interface ISongs {
-    id:string;
-    name:string;
-    artwork:string;
+    id: number;
+    name: string;
+    duration: number;
+    track: number;
+    url: string;
 }

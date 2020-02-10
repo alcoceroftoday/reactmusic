@@ -11,9 +11,11 @@ interface IState {
    items: any
  }
  interface ICardSongs {
-    id:string;
-    name:string;
-    artwork:string;
+  id: string;
+  name: string;
+  duration: number;
+  // track: number;
+  // url: string;
 }
 class Songs extends React.PureComponent<IProps, IState>{
   constructor(props:any) {
@@ -41,7 +43,7 @@ class Songs extends React.PureComponent<IProps, IState>{
     <div>Songs</div>
     {this.state.items.map((val:ICardSongs) => {
         return(
-            <SongsCont id={val.id} name={val.name} artwork={val.artwork}/>
+            <SongsCont id={val.id} name={val.name} duration={val.duration}/>
         )
     })}
       </>

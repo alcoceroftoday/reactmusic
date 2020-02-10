@@ -27,7 +27,7 @@ const ArtistsCont = (props:ICardArtist) => (
                 
           <div className="card-content">
 
-            <span className="card-title activator grey-text text-darken-4">{props.name}<i className="material-icons right"><Link to={"/     &&"}>Songs</Link></i></span>
+            <span className="card-title activator grey-text text-darken-4">{props.name}<i className="material-icons right"><Link to={"/artist/"+props.id}>Albums</Link></i></span>
           </div>
 
         </div>
