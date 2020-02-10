@@ -27,7 +27,7 @@ const AllLink =(props:{Links:string[]}) =>{
 
     return (<>
     {props.Links.map(value => {
-        return <NavLink className="collection-item" to={`/${value.toLowerCase()}`} >{value}</NavLink>
+        return <NavLink key={value.toLowerCase()} className="collection-item" to={`/${value.toLowerCase()}`} >{value}</NavLink>
     })}
     </>)
 }  

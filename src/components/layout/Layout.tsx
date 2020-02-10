@@ -13,6 +13,7 @@ import Artist from "./artists/Artist";
 import Artists from "./artists/Artists";
 import Browser from "../Browser";
 import Songs from "./songs/Songs";
+import DataProvider from "../Context/DataProvider";
 interface RouteParams {
   id: string
 }
@@ -23,19 +24,21 @@ const contentPrincipal: CSS.Properties = {
 };
 export default function Layout() {
   return (
-    <Router>
-    <NavLateral />
-    <div style={contentPrincipal}>
-      <Switch>
-        <Route path="/browser" exact component={()=>(<Browser />)}/>
-        <Route path="/artists" exact component={ShareArtists}/>
-        <Route path="/artist/:id" exact component={ShareArtists}/>
-        <Route path="/albums" exact component={ShareAlbums}/>
-        <Route path="/album/:id" exact component={ShareAlbums}/>
-        <Route path="/songs" exact component={()=>(<Songs  />)}/>
-      </Switch>
-    </div>
-    </Router>  
+    <DataProvider>
+      <Router>
+      <NavLateral />
+      <div style={contentPrincipal}>
+        <Switch>
+          <Route path="/browser" exact component={()=>(<Browser />)}/>
+          <Route path="/artists" exact component={ShareArtists}/>
+          <Route path="/artist/:id" exact component={ShareArtists}/>
+          <Route path="/albums" exact component={ShareAlbums}/>
+          <Route path="/album/:id" exact component={ShareAlbums}/>
+          <Route path="/songs" exact component={()=>(<Songs  />)}/>
+        </Switch>
+      </div>
+      </Router> 
+    </DataProvider>
   );
 }
 
