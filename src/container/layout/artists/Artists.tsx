@@ -1,33 +1,24 @@
 import React from 'react';
-import axios from "axios";
-import ArtistsCont from '../../../containers/Content/ArtistsCont';
-import ApiServices from '../../api/ApiServices';
+import ArtistsCont from '../../../component/Content/ArtistsCont';
+import ApiServices, {IArtists} from '../../api/ApiServices';
 
 interface IProps {
-    superhero?: string;
+    prop?: string;
   }
-  
 interface IState {
    done: boolean,
-   items: any
+   items: IArtists[]
  }
- interface ICardAlbum {
-    id:string;
-    name:string;
-    artwork:string;
-}
+
 class Artists extends React.PureComponent<IProps, IState>{
-  constructor(props:any) {
+  constructor(props:IProps) {
       super(props);
       this.state = { 
       done: false,
-      items: ["a"]
-
+      items: []
   };
-  
 }
   componentDidMount(){
-    
     const datos = new ApiServices();
     datos.getArtists().then(r =>
         {this.setState({done:true,items:r})}
@@ -39,9 +30,9 @@ class Artists extends React.PureComponent<IProps, IState>{
       return(
           <>
     <div>Artists</div>
-    {this.state.items.map((val:ICardAlbum) => {
+    {this.state.items.map((val:IArtists) => {
         return(
-            <ArtistsCont id={val.id} name={val.name} artwork={val.artwork}/>
+            <ArtistsCont key={val.id} id={val.id} name={val.name} artwork={val.artwork}/>
         )
     })}
       </>

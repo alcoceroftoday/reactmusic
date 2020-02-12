@@ -1,21 +1,18 @@
-import React ,{ useState }from 'react';
+import React from 'react';
 import CSS from "csstype";
 import {
   BrowserRouter as Router,
   Link
 } from "react-router-dom";
-interface ICardArtist {
-      id:string;
-    name:string;
-    artwork:string;
-}
+import {IAlbums} from '../../container/api/ApiServices';
+
 const contentCard: CSS.Properties = {
   width: '350px',
   height: '450px',
   float: 'left',
   margin:'10px'
 };
-const ArtistsCont = (props:ICardArtist) => (
+const AlbumsCont = (props:IAlbums) => (
   <ul>
       {
       <>
@@ -24,17 +21,13 @@ const ArtistsCont = (props:ICardArtist) => (
           <div className="card-image waves-effect waves-block waves-light">
           <img className="activator" src={"asds"}/>
           </div>
-                
           <div className="card-content">
-
-            <span className="card-title activator grey-text text-darken-4">{props.name}<i className="material-icons right"><Link to={"/artist/"+props.id}>Albums</Link></i></span>
+            <span className="card-title activator grey-text text-darken-4">{props.name}<i className="material-icons right"><Link to={"/album/"+props.id}>Songs</Link></i></span>
           </div>
-
         </div>
       </div>     
       </>
-
       }
   </ul>
 );
-export default ArtistsCont;
+export default AlbumsCont;

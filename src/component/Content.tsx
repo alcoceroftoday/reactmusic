@@ -5,13 +5,10 @@ class Albums extends Component{
       super(props);
 
   };
-  
-
-
   render(){
       return(
           <>
-            <div>asdsda</div>
+            <div></div>
                     
       </>
       );

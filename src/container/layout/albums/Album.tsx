@@ -1,35 +1,23 @@
 import React from 'react';
-import axios from "axios";
-import SongsCont from '../../../containers/Content/SongsCont';
-import ApiServices from '../../api/ApiServices';
+import SongsCont from '../../../component/Content/SongsCont';
+import ApiServices,{ISongs} from '../../api/ApiServices';
 
 interface IProps {
     id: string;
   }
-  
 interface IState {
    done: boolean,
-   items: any
+   items: ISongs[]
  }
- interface ICardSong {
-  id: string;
-  name: string;
-  duration: number;
-  // track: number;
-  // url: string;
-}
 class Album extends React.PureComponent<IProps, IState>{
-  constructor(props:any) {
+  constructor(props:IProps) {
       super(props);
       this.state = { 
       done: false,
-      items: ["a"]
-
+      items: []
   };
-  
 }
   componentDidMount(){
-    console.log(this.props.id)
     const datos = new ApiServices();
     datos.getAlbum(this.props.id).then(r =>
         {this.setState({done:true,items:r})}
@@ -41,9 +29,9 @@ class Album extends React.PureComponent<IProps, IState>{
       return(
           <>
     <div>Songs</div>
-    {this.state.items.map((val:ICardSong) => {
+    {this.state.items.map((val:ISongs) => {
         return(
-            <SongsCont id={val.id} name={val.name} duration={val.duration}/>
+            <SongsCont key={val.id} id={val.id} name={val.name} duration={val.duration}/>
         )
     })}
       </>

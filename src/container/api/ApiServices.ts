@@ -19,20 +19,28 @@ export default class ApiServices{
         return http.get("/api/tracks").then(res=>res.data);
     }
 }
-interface IArtists {
+export interface IArtists {
     id:string;
     name:string;
     artwork:string;
+    created_at?:string;
+    updated_at?:string;
 }
-interface IAlbums {
+export interface IAlbums {
     id:string;
     name:string;
     artwork:string;
+    artist_id?:Number;
+    created_at?:string;
+    updated_at?:string;
 }
-interface ISongs {
-    id: number;
+export interface ISongs {
+    id: string;
     name: string;
-    duration: number;
-    track: number;
-    url: string;
+    track?: string;
+    duration?: number;
+    url?: string;
+    album_id?: string;
+    created_at?: string;
+    updated_at?: string;
 }
